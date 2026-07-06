@@ -121,13 +121,57 @@
         .hero-text h2 { font-size: 1.5rem; color: var(--secondary-accent); margin-bottom: 20px; }
         .hero-text p { font-size: 1.2rem; margin-bottom: 30px; max-width: 600px; }
 
+        /* Contact Box Styled from image_ddf840.png */
         .contact-info {
             font-size: 1.1rem;
             margin-bottom: 30px;
-            background: var(--surface-color);
-            padding: 15px;
+            background: #171e27;
+            padding: 25px;
             border-left: 4px solid var(--primary-accent);
-            display: inline-block;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 440px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.15rem;
+            color: var(--text-main);
+        }
+
+        .contact-item a {
+            color: var(--primary-accent);
+        }
+
+        .contact-item a:hover {
+            color: var(--text-bright);
+        }
+
+        .cv-btn {
+            display: block;
+            margin-top: 10px;
+            padding: 12px;
+            border: 1px solid var(--primary-accent);
+            background: transparent;
+            color: var(--primary-accent);
+            font-weight: bold;
+            text-align: center;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.95rem;
+            font-family: 'Orbitron', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .cv-btn:hover {
+            background: var(--primary-accent);
+            color: var(--bg-color);
+            box-shadow: 0 0 15px rgba(102, 252, 241, 0.4);
         }
 
         .hero-image { flex: 1; text-align: center; }
@@ -201,20 +245,103 @@
         .back-nav-btn { display: inline-block; margin-bottom: 25px; font-weight: bold; text-transform: uppercase; cursor: pointer; color: var(--primary-accent); }
         .detail-content h1 { color: var(--primary-accent); margin-bottom: 15px; font-size: 2.2rem; }
         .detail-meta { color: var(--secondary-accent); margin-bottom: 30px; font-weight: bold; }
-        .detail-body p { font-size: 1.15rem; margin-bottom: 20px; line-height: 1.8; color: #e2e4e6; }
-        .detail-body h4 { font-size: 1.3rem; margin: 25px 0 12px; color: var(--text-bright); }
+        .detail-body p { font-size: 1.15rem; margin-bottom: 20px; line-height: 1.8; color: #e2e4e6; text-align: justify; }
+        .detail-body h4 { font-size: 1.3rem; margin: 25px 0 12px; color: var(--text-bright); border-bottom: 1px dashed var(--secondary-accent); padding-bottom: 5px; }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Multi-Column Terminal Style Footer Deck */
+        footer {
+            background: #0e1013;
+            border-top: 2px solid var(--secondary-accent);
+            padding: 50px 5% 30px;
+            margin-top: 80px;
+            font-family: 'Rajdhani', sans-serif;
         }
 
-        footer { text-align: center; padding: 30px; background: var(--surface-color); border-top: 1px solid var(--secondary-accent); margin-top: 60px; }
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        .footer-brand {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .footer-brand h4 {
+            font-size: 1.4rem;
+            color: var(--primary-accent);
+            margin-bottom: 10px;
+        }
+
+        .footer-brand p {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-contact-matrix {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .footer-link-card {
+            display: flex;
+            flex-direction: column;
+            background: rgba(31, 40, 51, 0.4);
+            border: 1px solid rgba(69, 162, 158, 0.2);
+            padding: 12px 20px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link-card:hover {
+            border-color: var(--primary-accent);
+            background: rgba(102, 252, 241, 0.03);
+            box-shadow: 0 0 15px rgba(102, 252, 241, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .footer-link-card .label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--secondary-accent);
+            letter-spacing: 1.5px;
+            margin-bottom: 4px;
+            font-weight: bold;
+        }
+
+        .footer-link-card .value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+            color: var(--text-bright);
+        }
+
+        .footer-bottom {
+            width: 100%;
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px dashed rgba(197, 198, 199, 0.1);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
 
         @media (max-width: 768px) {
             header.hero-layout { flex-direction: column-reverse; text-align: center; }
             .numbers-section { flex-direction: column; gap: 30px; }
             .spa-page { padding-top: 100px; }
+            .contact-info { margin: 0 auto 30px; }
+            .footer-container { flex-direction: column; align-items: center; text-align: center; }
+            .footer-contact-matrix { flex-direction: column; width: 100%; gap: 15px; }
+            .footer-link-card { width: 100%; }
         }
     </style>
 </head>
@@ -222,7 +349,7 @@
 
     <!-- Static Navigation -->
     <nav>
-        <div class="logo">AMR</div>
+        <div class="logo">TECHNO.MEP</div>
         <ul>
             <li><a onclick="navigateTo('home')" id="nav-home" class="active-nav">Home</a></li>
             <li><a onclick="navigateTo('experience')" id="nav-experience">Experience</a></li>
@@ -237,18 +364,25 @@
             <div class="hero-text">
                 <h1>Amrithesh K</h1>
                 <h2>Techno-Commercial Engineer (MEP)</h2>
+                
+                <!-- Structured Content Box adapted from image_ddf840.png -->
                 <div class="contact-info">
-                    📍 United Arab Emirates | Dubai<br>
-                    ✉️ amritheshk22@outlook.com<br>
-                    📞 +971 568924886
+                    <div class="contact-item"><span>📍</span> <span>Dubai, United Arab Emirates</span></div>
+                    <div class="contact-item"><span>✉️</span> <a href="mailto:amritheshk22@outlook.com">amritheshk22@outlook.com</a></div>
+                    <div class="contact-item"><span>📞</span> <a href="tel:+971568924886">+971 568924886</a></div>
+                    
+                    <a href="https://drive.google.com/drive/folders/1lm0JUSAxqxOI0LdGMr9t-kxRe_dyzaHk?usp=sharing" download="Amrithesh_K_CV.pdf" class="cv-btn">
+                        📥 Download CV (PDF)
+                    </a>
                 </div>
+                
                 <p>
                     A dedicated Procurement and Estimation Engineer (MEP) specializing in end-to-end commercial operations, detailed quantity take-offs, and competitive vendor compliance structures for complex installations across the GCC region.
                 </p>
                 <button onclick="navigateTo('blogs')" class="read-more-btn" style="padding: 12px 24px;">Explore Insights</button>
             </div>
             <div class="hero-image">
-                <img src="profile.jpeg" alt="Amrithesh K Profile Photo">
+                <img src="profile.jpg" alt="Amrithesh K Profile Photo">
             </div>
         </header>
 
@@ -309,7 +443,7 @@
                     <span class="card-meta">Core Competencies</span>
                     <h3>Technical Arsenal</h3>
                     <ul>
-                        <li><strong>Software:</strong> AutoCAD, Planswift, Power BI, Planswift, MATLAB.</li>
+                        <li><strong>Software:</strong> AutoCAD, Planswift, Power BI, MATLAB.</li>
                         <li><strong>Commercial:</strong> Vendor Negotiations, Contractual Value Engineering, Material Compliance Tracking.</li>
                     </ul>
                 </div>
@@ -368,7 +502,7 @@
                 <div>
                     <span class="card-meta">Case Study</span>
                     <h3>Procurement Optimization Case Studies</h3>
-                    <p>An inside look at mitigating supply chain volatility in the GCC market through proactive vendor coordination and strategic lead-time buffers.</p>
+                    <p>Real-World Procurement Optimization in Fast-Track MEP Projects across high-rise and commercial developments in the UAE environment.</p>
                 </div>
                 <button class="read-more-btn" onclick="openDetail('blog', 1)">Read Full Case</button>
             </div>
@@ -376,8 +510,8 @@
             <div class="content-card">
                 <div>
                     <span class="card-meta">Industry Insight</span>
-                    <h3>AI Integration Trends within the Modern MEP Landscape</h3>
-                    <p>Evaluating how algorithmic models and machine learning are shifting the baseline parameters of predictive estimation and automated cost forecasting.</p>
+                    <h3>AI Integration Trends within Modern MEP Procurement & Estimation</h3>
+                    <p>How AI-assisted analytics tools and predictive logic dashboards are quietly transforming commercial decision-making speeds in construction.</p>
                 </div>
                 <button class="read-more-btn" onclick="openDetail('blog', 2)">Read Article</button>
             </div>
@@ -385,8 +519,8 @@
             <div class="content-card">
                 <div>
                     <span class="card-meta">Commercial Strategy</span>
-                    <h3>How Key Decision Makers Impact Procurement Dynamics</h3>
-                    <p>Analyzing how early stage alignment between client representatives, structural consultants, and estimation engineers secures target profit margins.</p>
+                    <h3>Importance of Category Management in MEP Procurement Strategy</h3>
+                    <p>Moving away from reactive, isolated structural purchasing to a high-leverage strategic system for control over engineering cost structures.</p>
                 </div>
                 <button class="read-more-btn" onclick="openDetail('blog', 3)">Read Article</button>
             </div>
@@ -395,7 +529,7 @@
                 <div>
                     <span class="card-meta">Value Engineering</span>
                     <h3>Value Engineering vs Brand Over-Specification</h3>
-                    <p>Navigating modern architectural tenders where restrictive proprietary brand selections present cost challenges, and how to find code-compliant alternatives.</p>
+                    <p>Balancing technical code compliance and critical path timeline schedules against long lead-time proprietary brand selections.</p>
                 </div>
                 <button class="read-more-btn" onclick="openDetail('blog', 4)">Read Article</button>
             </div>
@@ -412,76 +546,138 @@
         </div>
     </section>
 
+    <!-- Repositioned Horizontal Contact Deck Footer -->
     <footer>
-        <p>&copy; 2026 Amrithesh K | Built for the future.</p>
+        <div class="footer-container">
+            
+            <div class="footer-brand">
+                <h4>TECHNO.MEP // DIGITAL PIPELINE</h4>
+                <p>Commercial Operations & System Optimization</p>
+            </div>
+
+            <!-- Interlocking Data Cards Style Matrix -->
+            <div class="footer-contact-matrix">
+                
+                <div class="footer-link-card">
+                    <span class="label">📍 Deployment Hub</span>
+                    <span class="value">Dubai, UAE</span>
+                </div>
+
+                <a href="mailto:amritheshk22@outlook.com" class="footer-link-card">
+                    <span class="label">✉️ Secure Comms</span>
+                    <span class="value">amritheshk22@outlook.com</span>
+                </a>
+
+                <a href="tel:+971568924886" class="footer-link-card">
+                    <span class="label">📞 Signal Route</span>
+                    <span class="value">+971 568924886</span>
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Amrithesh K | System Online. All Rights Reserved.</p>
+        </div>
     </footer>
 
     <!-- SPA Navigation Control Script -->
     <script>
-        // Expanded In-Depth Natural Content Repositories
+        // Updated Real-World Case Content Repositories
         const blogRepository = {
             1: {
-                title: "Procurement Optimization Case Studies: Supply Chain Management in Fast-Track Infrastructure Projects",
-                meta: "Category: Commercial Infrastructure Case Study | Reading Time: 6 mins",
+                title: "Procurement Optimization Case Studies (MEP Projects – UAE Experience)",
+                meta: "Category: Real-World Commercial Case Study | Reading Time: 5 mins",
                 content: `
-                    <p>In modern high-density engineering environments across the GCC, project delays often stem not from mechanical failures on site, but from subtle disruptions within upstream material supply channels. Fast-track MEP projects require immediate turnaround times, meaning standard localized logistics models must be adapted to withstand sudden material shortfalls or unexpected delays.</p>
+                    <p>In the UAE construction industry, especially in high-rise and commercial developments, procurement is not a linear process. It is a continuous balancing act between design changes, consultant approvals, material lead times, and budget constraints.</p>
+                    <p>In one of the recent high-rise residential projects I worked on in Dubai, the procurement process for HVAC ducting accessories and electrical containment systems was delayed due to repeated consultant revisions. Although the BOQ was already finalized, coordination changes from the design team led to multiple RFQ cycles with suppliers.</p>
                     
-                    <h4>The Commercial Problem</h4>
-                    <p>During a fast-track electro-mechanical development sequence, unexpected logjams in international container routes caused a projected 4-week delivery delay for critical, long-lead central HVAC equipment components. If left unaddressed, this delay would cause downstream labor backlogs, halting installation crews and triggering severe contractual delay penalties from the developer.</p>
+                    <h4>Key Real Challenges Observed in Actual Projects:</h4>
+                    <ul>
+                        <li>Consultant-driven specification changes after tender award</li>
+                        <li>Long-lead items such as FCUs and fire alarm panels causing sequencing delays</li>
+                        <li>Vendor quotation variations up to 25–30% for identical specifications</li>
+                        <li>Approval delays due to incomplete technical submittals</li>
+                        <li>Site urgency pushing procurement teams into “rush purchasing mode”</li>
+                    </ul>
                     
-                    <h4>The Strategic Resolution</h4>
-                    <p>Instead of taking a passive approach, we executed a two-tiered negotiation track. First, we initiated an itemized technical audit of local manufacturer alternatives that held ready-to-ship stock. Second, we adjusted our workflow using submittal engineering, presenting performance comparison sheets directly to the consulting inspectors to prove technical equivalence. By securing an emergency material substitution within 72 hours, we kept the on-site installation schedule fully intact.</p>
+                    <h4>Applied Procurement Optimization Strategies:</h4>
+                    <p><strong>1. Early Vendor Involvement:</strong> Approved vendors were engaged during the design coordination stage itself to reduce rework during execution.</p>
+                    <p><strong>2. Standardization of Materials:</strong> Where possible, products were standardized across multiple floors and systems to reduce variation and improve bulk purchasing leverage.</p>
+                    <p><strong>3. Lead Time Buffer Planning:</strong> Instead of reacting to site requirements, procurement schedules were aligned with critical path activities such as ceiling closure, pressure testing, and commissioning.</p>
+                    <p><strong>4. Cost vs Availability Trade-off Analysis:</strong> In several cases, alternative equivalent brands were proposed to consultants to avoid delays caused by non-availability of specified materials.</p>
+                    <p><strong>5. Digital Tracking Systems:</strong> Excel-based procurement logs were gradually upgraded into dashboard-style tracking to monitor RFQ status, approval status, and delivery milestones.</p>
                     
-                    <h4>Measurable Outcomes</h4>
-                    <p>This proactive pivot eliminated a potential 28-day project delay, maintained full compliance with local authority codes, and protected project margins. The primary takeaway is clear: successful procurement relies on constant risk assessment, deep supplier networks, and maintaining strong, clear channels of communication with project consultants.</p>
+                    <h4>Measurable Outcome</h4>
+                    <p>These improvements reduced average procurement delays by nearly 20–25% in execution stages and significantly improved coordination between site teams and the commercial office infrastructure.</p>
                 `
             },
             2: {
-                title: "AI Integration Trends within the Modern MEP Landscape: Shifting Baseline Cost Frameworks",
-                meta: "Category: Automation Research & Application Insights | Reading Time: 5 mins",
+                title: "AI Integration Trends within Modern MEP Procurement & Estimation",
+                meta: "Category: Automation Systems & Advanced Analytics | Reading Time: 4 mins",
                 content: `
-                    <p>The estimation ecosystem within mechanical, electrical, and plumbing contracting has long relied on manual calculations. However, the introduction of automated machine-learning models is shifting how techno-commercial engineers forecast material requirements, identify cost variances, and evaluate bidding risks.</p>
+                    <p>Artificial Intelligence in MEP is not yet fully automated in real project environments, but its influence is becoming visible in estimation, procurement planning, and project control systems.</p>
+                    <p>In my experience working with procurement tracking and estimation workflows, the biggest improvement has come not from full AI replacement—but from AI-assisted decision making tools integrated into existing systems like Excel, Power BI, and ERP platforms.</p>
                     
-                    <h4>Moving Beyond Static Spreadsheets</h4>
-                    <p>Traditional estimation relies heavily on human pattern recognition to adjust for price fluctuations in bulk commodities, such as copper, steel, and advanced electrical components. By integrating automated predictive parsing engines into estimation software, teams can analyze historical data from hundreds of previous tenders alongside live international commodity feeds simultaneously.</p>
+                    <h4>Real Industry Applications Already in Use:</h4>
+                    <p><strong>1. Procurement Forecasting Models:</strong> AI-based analytics tools are now able to predict material price fluctuations (steel, copper, copper cables), calculate supplier delay probabilities based on historical performance metadata, and flag seasonal supply chain risks specific to the GCC market ecosystem.</p>
+                    <p><strong>2. Automated Quantity Validation:</strong> In estimation stages, AI tools assist in cross-checking BOQ quantities directly against layout drawings, reducing manual measurement errors.</p>
+                    <p><strong>3. Smart Procurement Dashboards:</strong> Power BI dashboards enhanced with predictive logic are used to flag delayed purchase orders, identify high-risk vendors, and track project procurement KPIs in real time.</p>
+                    <p><strong>4. Document Automation:</strong> RFQs, technical comparison statements, and submission sheets are increasingly being automated using structured baseline templates and automated text formatting elements.</p>
                     
-                    <h4>Applying Robotic Logic to Commercial Pipelines</h4>
-                    <p>My academic research in robotic automation logic highlighted how rule-based sensory models can effectively streamline complex physical tasks. Applying those same structural principles to digital workflows shows that software automation can manage routine, manual quantity take-offs with high precision, allowing engineers to focus on strategic negotiation and value engineering.</p>
+                    <h4>Practical Reality in UAE Projects</h4>
+                    <p>Despite these advancements, most MEP contractors still rely heavily on manual Excel tracking sheets, email-based supplier communication networks, and experience-based decision making. AI is not replacing engineers—it is enhancing the overall operational speed of commercial decisions.</p>
                     
-                    <h4>The Path Forward</h4>
-                    <p>AI will not replace the commercial engineer. Instead, it serves as an analytical partner that flags pricing discrepancies, detects code deviations early in schematic drawings, and handles repetitive tasks. This shift allows teams to focus on building strong client relationships and executing smarter commercial negotiations.</p>
+                    <h4>Future Direction</h4>
+                    <p>The next phase of AI deployment in MEP will focus on automated vendor selection scoring indexes, real-time cost estimation linked with live material indexes, direct integration of procurement packages within BIM models, and predictive delay warnings for active site execution teams.</p>
                 `
             },
             3: {
-                title: "How Key Decision Makers Impact Procurement Dynamics: Strategic Coordination in Project Bidding",
-                meta: "Category: Commercial Strategy & Executive Leadership | Reading Time: 4 mins",
+                title: "Importance of Category Management in MEP Procurement Strategy",
+                meta: "Category: Commercial Strategy & Cost Controls | Reading Time: 5 mins",
                 content: `
-                    <p>Winning a profitable MEP tender requires balancing two conflicting priorities: maintaining competitive, aggressive commercial pricing while ensuring complete adherence to design specifications. Achieving this balance requires close alignment among project developers, consultants, and procurement engineers early in the process.</p>
+                    <p>Category management is one of the most underrated but powerful procurement strategies in the MEP industry. In many projects, procurement is still handled reactively—based on urgent site requests or individual package requirements. This leads to fragmented purchasing, inconsistent pricing, and missed negotiation opportunities. Category management changes this approach completely.</p>
                     
-                    <h4>The Disconnect in Tendering</h4>
-                    <p>Tenders often encounter issues when procurement teams operate in isolation, treating material items as simple lines on a spreadsheet. This approach can lead to selecting low-cost equipment that fails to meet the consultant's performance criteria, resulting in costly re-submittals and project delays later on.</p>
+                    <h4>What is Category Management in MEP?</h4>
+                    <p>Instead of treating procurement as isolated packages (HVAC, Electrical, Plumbing), category management groups procurement loops into strategic channels:</p>
+                    <ul>
+                        <li><strong>HVAC Systems:</strong> Chillers, AHUs, FCUs, and Duct Accessories</li>
+                        <li><strong>Electrical Distribution:</strong> Switchgear Panels, Cabling, and Containment Networks</li>
+                        <li><strong>Plumbing & Drainage Systems</strong></li>
+                        <li><strong>Fire Fighting & Fire Life Safety Systems</strong></li>
+                        <li><strong>Low Current & ELV Systems</strong></li>
+                    </ul>
+                    <p>Each major category is actively managed like a mini supply chain with tailored strategy rules, vendor selection control matrices, and cost optimization planning modules.</p>
                     
-                    <h4>Establishing Early Cross-Channel Technical Reviews</h4>
-                    <p>Smarter bidding involves analyzing the underlying functional requirements of a project from day one. By collaborating early with primary engineers, estimating teams can identify technical gaps, propose optimized material packages, and secure pre-approvals from consultants before submitting final bids.</p>
+                    <h4>Real Benefits Observed in Projects:</h4>
+                    <p><strong>1. Better Negotiation Power:</strong> Consolidating procurement under categories enables bulk purchasing power with preferred suppliers, resulting in improved pricing structures and payment terms.</p>
+                    <p><strong>2. Reduced Vendor Fragmentation:</strong> Instead of dealing with 10–15 small suppliers per individual system layer, category management consolidates and stabilizes dependency down to 3–5 strategic partners.</p>
+                    <p><strong>3. Improved Standardization:</strong> It helps enforce standard product selection across multiple ongoing projects or multi-tower complexes within the same development footprint.</p>
+                    <p><strong>4. Faster Approval Cycles:</strong> Material approvals become smoother because preferred vendor lists are pre-approved within categories.</p>
+                    <p><strong>5. Better Risk Control:</strong> Supply chain risks are minimized by avoiding single-source vendor vulnerabilities.</p>
                     
-                    <h4>The Competitive Edge</h4>
-                    <p>This collaborative approach changes how the client views your proposal. Rather than just offering a low price, your firm becomes a practical technical partner capable of delivering commercial efficiency without compromising design integrity or system reliability.</p>
+                    <h4>Practical Example from UAE MEP Projects</h4>
+                    <p>In one residential tower project, HVAC procurement was initially fragmented between multiple suppliers for FCUs, duct heaters, motorized dampers, and insulation materials. After shifting to category-based procurement: a single vendor layout improved overall delivery sequencing, RFQ cycles were reduced significantly, material component compatibility issues were eliminated, and tracking metrics became structured and predictable.</p>
                 `
             },
             4: {
-                title: "Value Engineering vs Brand Over-Specification: Navigating Rigid Material Requirements",
-                meta: "Category: Value Engineering & Cost Optimization | Reading Time: 5 mins",
+                title: "Value Engineering vs Brand Over-Specification",
+                meta: "Category: Value Engineering & Optimization | Reading Time: 4 mins",
                 content: `
-                    <p>A common challenge in modern MEP bidding is the rise of brand over-specification, where design documents restrict selections to a narrow list of high-priced proprietary brands. This practice limits procurement flexibility and drives up overall project costs.</p>
+                    <p>In many MEP projects across the GCC, structural and performance specifications are heavily influenced by brand preferences, consultant legacy standards, or client expectations. While this ensures quality consistency, it often creates procurement challenges when specified brands have long lead times, products are not available locally, imported materials increase project cost, or alternative compliant solutions are ignored.</p>
                     
-                    <h4>Redefining Value Engineering</h4>
-                    <p>True value engineering is not about cutting costs by substituting inferior materials. It is a systematic process that maintains system performance and safety while identifying more cost-effective ways to achieve the design intent.</p>
+                    <h4>Real Project Scenario</h4>
+                    <p>In one commercial project, a specified HVAC accessory brand had a 14–16 week delivery lead time. However, site execution required physical installation within 6 weeks to maintain critical ceiling closure deadlines. A detailed value engineering proposal was prepared and submitted with a fully compliant alternative brand, equivalent technical performance data, and warranty structures matching all consultant requirements. After technical review, the alternative solution was accepted, preventing a potential project delay.</p>
                     
-                    <h4>Navigating Brand Restrictions</h4>
-                    <p>When dealing with rigid brand restrictions, the techno-commercial engineer must look beyond the brand name and analyze the equipment's core engineering specifications, such as raw performance data, material grades, and compliance certifications. Presenting side-by-side compliance matrices allows you to prove to consultants that an alternative brand will deliver the same operational life and efficiency at a lower cost.</p>
-                    
-                    <h4>Delivering Commercial Value</h4>
-                    <p>This approach helps unlock hidden savings within mechanical, electrical, and plumbing scopes. It demonstrates that professional commercial engineering relies on technical expertise, regulatory knowledge, and clear, data-driven communication with project stakeholders.</p>
+                    <h4>Value Engineering Evaluation Factors:</h4>
+                    <ul>
+                        <li>Technical compliance parameters with project documentation specifications</li>
+                        <li>Lifecycle cost analysis (Initial CapEx vs Operational OpEx)</li>
+                        <li>Immediate availability within the local UAE market</li>
+                        <li>Maintenance accessibility and installation compatibility profiles</li>
+                        <li>Warranty terms and local service support engineering footprints</li>
+                    </ul>
                 `
             }
         };
