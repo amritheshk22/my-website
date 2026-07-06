@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amrithesh K | Techno-Commercial Engineer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap');
+
+        :root {
+            --bg-color: #0b0c10;
+            --surface-color: #1f2833;
+            --primary-accent: #66fcf1;
+            --secondary-accent: #45a29e;
+            --text-main: #c5c6c7;
+            --text-bright: #ffffff;
+            --card-hover: #25303d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Rajdhani', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--text-bright);
+            letter-spacing: 1px;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-accent);
+            transition: all 0.3s ease;
+        }
+
+        /* Navigation Layout */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(11, 12, 16, 0.95);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 1px solid var(--secondary-accent);
+            backdrop-filter: blur(5px);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--primary-accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover, nav ul li a.active-nav {
+            color: var(--text-bright);
+            text-shadow: 0 0 8px var(--primary-accent);
+            background: rgba(102, 252, 241, 0.1);
+        }
+
+        /* SPA Virtual Page Viewport */
+        .spa-page {
+            display: none;
+            min-height: 100vh;
+            padding: 120px 5% 60px;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .spa-page.active-view {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hero Landing Specifics */
+        header.hero-layout {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            min-height: calc(100vh - 180px);
+            padding: 40px 0;
+        }
+
+        .hero-text { flex: 1; }
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-accent);
+            text-shadow: 0 0 10px rgba(102, 252, 241, 0.3);
+        }
+        .hero-text h2 { font-size: 1.5rem; color: var(--secondary-accent); margin-bottom: 20px; }
+        .hero-text p { font-size: 1.2rem; margin-bottom: 30px; max-width: 600px; }
+
+        .contact-info {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            background: var(--surface-color);
+            padding: 15px;
+            border-left: 4px solid var(--primary-accent);
+            display: inline-block;
+        }
+
+        .hero-image { flex: 1; text-align: center; }
+        .hero-image img {
+            width: 330px; height: 330px; object-fit: cover; border-radius: 50%;
+            border: 4px solid var(--primary-accent); box-shadow: 0 0 30px rgba(102, 252, 241, 0.4);
+        }
+
+        /* Performance Metrics Dashboard */
+        .numbers-section {
+            display: flex;
+            justify-content: space-around;
+            background: var(--surface-color);
+            padding: 40px 5%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-top: 40px;
+        }
+
+        .number-box { text-align: center; }
+        .number-box h3 { font-size: 3rem; color: var(--primary-accent); margin-bottom: 5px; }
+        .number-box p { font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-bright); }
+
+        /* General Section Structure */
+        .section-title { font-size: 2.5rem; margin-bottom: 15px; text-align: center; color: var(--text-bright); }
+        .section-subtitle { text-align: center; color: var(--secondary-accent); margin-bottom: 40px; font-size: 1.2rem; }
+        .section-title::after {
+            content: ''; display: block; width: 80px; height: 4px; background: var(--primary-accent); margin: 10px auto 0; border-radius: 2px;
+        }
+
+        /* Grid Infrastructure */
+        .grid-layout { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .content-card {
+            background: var(--surface-color); padding: 30px; border-radius: 8px;
+            border-top: 4px solid var(--secondary-accent); transition: all 0.3s ease;
+            display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .content-card:hover { transform: translateY(-5px); background: var(--card-hover); box-shadow: 0 10px 20px rgba(102, 252, 241, 0.1); }
+        .content-card h3 { color: var(--primary-accent); margin-bottom: 12px; font-size: 1.4rem; }
+        .content-card p { color: var(--text-main); font-size: 1.05rem; margin-bottom: 15px; }
+        
+        .card-meta { color: var(--secondary-accent); font-weight: bold; font-size: 0.95rem; margin-bottom: 10px; display: block; }
+        .content-card ul { margin-left: 20px; margin-bottom: 15px; }
+        .content-card ul li { margin-bottom: 6px; }
+
+        /* Action Buttons */
+        .read-more-btn {
+            background: transparent; border: 1px solid var(--primary-accent); color: var(--primary-accent);
+            padding: 8px 16px; border-radius: 4px; font-weight: bold; text-transform: uppercase;
+            cursor: pointer; font-family: 'Rajdhani', sans-serif; letter-spacing: 1px; width: fit-content; transition: all 0.3s ease;
+        }
+        .read-more-btn:hover { background: var(--primary-accent); color: var(--bg-color); }
+
+        /* Video Showcase Specifics */
+        .video-placeholder {
+            width: 100%; height: 180px; background: linear-gradient(45deg, #1f2833, #0b0c10);
+            display: flex; align-items: center; justify-content: center; border-radius: 6px; margin-bottom: 15px; position: relative;
+        }
+        .play-btn {
+            width: 50px; height: 50px; background: rgba(102, 252, 241, 0.9); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; color: #000; font-size: 20px; transition: transform 0.3s ease;
+        }
+        .content-card:hover .play-btn { transform: scale(1.15); box-shadow: 0 0 15px var(--primary-accent); }
+
+        /* Single Detail View Overlay Container */
+        .detail-view-container {
+            display: none; background: var(--surface-color); padding: 40px; border-radius: 8px;
+            border: 1px solid var(--secondary-accent); max-width: 900px; margin: 40px auto 0;
+        }
+        .detail-view-container.active-detail { display: block; animation: fadeInUp 0.4s ease; }
+        .back-nav-btn { display: inline-block; margin-bottom: 25px; font-weight: bold; text-transform: uppercase; cursor: pointer; color: var(--primary-accent); }
+        .detail-content h1 { color: var(--primary-accent); margin-bottom: 15px; font-size: 2.2rem; }
+        .detail-meta { color: var(--secondary-accent); margin-bottom: 30px; font-weight: bold; }
+        .detail-body p { font-size: 1.15rem; margin-bottom: 20px; line-height: 1.8; color: #e2e4e6; }
+        .detail-body h4 { font-size: 1.3rem; margin: 25px 0 12px; color: var(--text-bright); }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        footer { text-align: center; padding: 30px; background: var(--surface-color); border-top: 1px solid var(--secondary-accent); margin-top: 60px; }
+
+        @media (max-width: 768px) {
+            header.hero-layout { flex-direction: column-reverse; text-align: center; }
+            .numbers-section { flex-direction: column; gap: 30px; }
+            .spa-page { padding-top: 100px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Static Navigation -->
+    <nav>
+        <div class="logo">TECHNO.MEP</div>
+        <ul>
+            <li><a onclick="navigateTo('home')" id="nav-home" class="active-nav">Home</a></li>
+            <li><a onclick="navigateTo('experience')" id="nav-experience">Experience</a></li>
+            <li><a onclick="navigateTo('vlogs')" id="nav-vlogs">Vlogs</a></li>
+            <li><a onclick="navigateTo('blogs')" id="nav-blogs">Blogs</a></li>
+        </ul>
+    </nav>
+
+    <!-- SPA VIEW: HOME -->
+    <main id="view-home" class="spa-page active-view">
+        <header class="hero-layout">
+            <div class="hero-text">
+                <h1>Amrithesh K</h1>
+                <h2>Techno-Commercial Engineer (MEP)</h2>
+                <div class="contact-info">
+                    📍 United Arab Emirates | Dubai<br>
+                    ✉️ amritheshk22@outlook.com<br>
+                    📞 +971 568924886
+                </div>
+                <p>
+                    A dedicated Procurement and Estimation Engineer (MEP) specializing in end-to-end commercial operations, detailed quantity take-offs, and competitive vendor compliance structures for complex installations across the GCC region.
+                </p>
+                <button onclick="navigateTo('blogs')" class="read-more-btn" style="padding: 12px 24px;">Explore Insights</button>
+            </div>
+            <div class="hero-image">
+                <img src="C:\Users\mail2\Downloads\web-amr\profile.jpeg" alt="Amrithesh K Profile Photo">
+            </div>
+        </header>
+
+        <div class="numbers-section">
+            <div class="number-box"><h3>4+</h3><p>Years Experience</p></div>
+            <div class="number-box"><h3>100%</h3><p>Budget Control</p></div>
+            <div class="number-box"><h3>1</h3><p>Springer Publication</p></div>
+            <div class="number-box"><h3>2</h3><p>Major MEP Firms</p></div>
+        </div>
+    </main>
+
+    <!-- SPA VIEW: EXPERIENCE -->
+    <section id="view-experience" class="spa-page">
+        <h2 class="section-title">Professional Trajectory</h2>
+        <p class="section-subtitle">A timeline of project execution, cost control, and engineering credentials.</p>
+        <div class="grid-layout">
+            
+            <div class="content-card">
+                <div>
+                    <span class="card-meta">2025 Jan - Present</span>
+                    <h3>Estimation and Procurement Engineer</h3>
+                    <p style="color: var(--secondary-accent); font-weight: 600;">PECO MEP | Dubai</p>
+                    <ul>
+                        <li>Prepared comprehensive estimations and technical itemized BOQs for HVAC, Electrical, and Firefighting networks.</li>
+                        <li>Automated analytical tracking via integrated Power BI supplier-bidding performance frameworks.</li>
+                        <li>Optimized engineering resource allocations to match active contract lifecycles.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <div>
+                    <span class="card-meta">2021 Sep - 2025</span>
+                    <h3>Estimation and Procurement Engineer</h3>
+                    <p style="color: var(--secondary-accent); font-weight: 600;">AL Farasha Electromechanical LLC | Dubai, UAE</p>
+                    <ul>
+                        <li>Managed baseline structural supply bidding configurations for core mechanical contracts.</li>
+                        <li>Coordinated authority material submittals alongside consulting inspectors.</li>
+                        <li>Maintained strict project asset tracking from inception to closeout documentation.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <div>
+                    <span class="card-meta">Academic Credential</span>
+                    <h3>B.Tech Electrical & Electronics</h3>
+                    <p style="color: var(--secondary-accent); font-weight: 600;">Amrita Vishwa Vidyapeetham | Class of 2021</p>
+                    <ul>
+                        <li><strong>Publication:</strong> Artificial Intelligence-Based Rubber Tapping Robot, published in Springer.</li>
+                        <li>Engineered predictive automation path-finding logic for localized agricultural robotic deployment.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card">
+                <div>
+                    <span class="card-meta">Core Competencies</span>
+                    <h3>Technical Arsenal</h3>
+                    <ul>
+                        <li><strong>Software:</strong> AutoCAD, Planswift, Power BI, Planswift, MATLAB.</li>
+                        <li><strong>Commercial:</strong> Vendor Negotiations, Contractual Value Engineering, Material Compliance Tracking.</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SPA VIEW: VLOGS -->
+    <section id="view-vlogs" class="spa-page">
+        <h2 class="section-title">Home Page Vlogs</h2>
+        <p class="section-subtitle">Visual breakdowns of daily technical execution, data workflows, and engineering research.</p>
+        
+        <div class="grid-layout" id="vlogs-main-list">
+            <div class="content-card">
+                <div class="video-placeholder"><div class="play-btn">▶</div></div>
+                <h3>On-Site: MEP Procurement Realities</h3>
+                <p>Navigating field variations, consultant approval loops, and material logistics under aggressive timelines.</p>
+                <button class="read-more-btn" onclick="openDetail('vlog', 1)">Watch Breakdown</button>
+            </div>
+
+            <div class="content-card">
+                <div class="video-placeholder"><div class="play-btn">▶</div></div>
+                <h3>Digital Tools in Estimation</h3>
+                <p>A look at connecting Planswift take-offs directly into live Power BI commercial dashboard interfaces.</p>
+                <button class="read-more-btn" onclick="openDetail('vlog', 2)">Watch Breakdown</button>
+            </div>
+
+            <div class="content-card">
+                <div class="video-placeholder"><div class="play-btn">▶</div></div>
+                <h3>Robotics & AI in Industry</h3>
+                <p>How automation principles from my Springer paper apply to modern construction resource management.</p>
+                <button class="read-more-btn" onclick="openDetail('vlog', 3)">Watch Breakdown</button>
+            </div>
+        </div>
+
+        <!-- Dynamic Sub-page for Vlogs -->
+        <div id="vlog-detail-view" class="detail-view-container">
+            <span class="back-nav-btn" onclick="closeDetail('vlogs')">← Back to Vlogs Catalog</span>
+            <div class="detail-content">
+                <h1 id="vlog-display-title"></h1>
+                <div class="detail-meta" id="vlog-display-meta"></div>
+                <div class="video-placeholder" style="height: 380px; margin-bottom: 30px;"><div class="play-btn" style="width: 80px; height: 80px; font-size: 30px;">▶</div></div>
+                <div class="detail-body" id="vlog-display-body"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPA VIEW: BLOGS & CASE STUDIES -->
+    <section id="view-blogs" class="spa-page">
+        <h2 class="section-title">Featuring Blogs & Case Studies</h2>
+        <p class="section-subtitle">In-depth market write-ups, engineering strategies, and cost-control analysis.</p>
+        
+        <div class="grid-layout" id="blogs-main-list">
+            <div class="content-card">
+                <div>
+                    <span class="card-meta">Case Study</span>
+                    <h3>Procurement Optimization Case Studies</h3>
+                    <p>An inside look at mitigating supply chain volatility in the GCC market through proactive vendor coordination and strategic lead-time buffers.</p>
+                </div>
+                <button class="read-more-btn" onclick="openDetail('blog', 1)">Read Full Case</button>
+            </div>
+
+            <div class="content-card">
+                <div>
+                    <span class="card-meta">Industry Insight</span>
+                    <h3>AI Integration Trends within the Modern MEP Landscape</h3>
+                    <p>Evaluating how algorithmic models and machine learning are shifting the baseline parameters of predictive estimation and automated cost forecasting.</p>
+                </div>
+                <button class="read-more-btn" onclick="openDetail('blog', 2)">Read Article</button>
+            </div>
+
+            <div class="content-card">
+                <div>
+                    <span class="card-meta">Commercial Strategy</span>
+                    <h3>How Key Decision Makers Impact Procurement Dynamics</h3>
+                    <p>Analyzing how early stage alignment between client representatives, structural consultants, and estimation engineers secures target profit margins.</p>
+                </div>
+                <button class="read-more-btn" onclick="openDetail('blog', 3)">Read Article</button>
+            </div>
+
+            <div class="content-card">
+                <div>
+                    <span class="card-meta">Value Engineering</span>
+                    <h3>Value Engineering vs Brand Over-Specification</h3>
+                    <p>Navigating modern architectural tenders where restrictive proprietary brand selections present cost challenges, and how to find code-compliant alternatives.</p>
+                </div>
+                <button class="read-more-btn" onclick="openDetail('blog', 4)">Read Article</button>
+            </div>
+        </div>
+
+        <!-- Dynamic Sub-page for Blogs -->
+        <div id="blog-detail-view" class="detail-view-container">
+            <span class="back-nav-btn" onclick="closeDetail('blogs')">← Back to Articles Index</span>
+            <div class="detail-content">
+                <h1 id="blog-display-title"></h1>
+                <div class="detail-meta" id="blog-display-meta"></div>
+                <div class="detail-body" id="blog-display-body"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Amrithesh K | Built for the future.</p>
+    </footer>
+
+    <!-- SPA Navigation Control Script -->
+    <script>
+        // Expanded In-Depth Natural Content Repositories
+        const blogRepository = {
+            1: {
+                title: "Procurement Optimization Case Studies: Supply Chain Management in Fast-Track Infrastructure Projects",
+                meta: "Category: Commercial Infrastructure Case Study | Reading Time: 6 mins",
+                content: `
+                    <p>In modern high-density engineering environments across the GCC, project delays often stem not from mechanical failures on site, but from subtle disruptions within upstream material supply channels. Fast-track MEP projects require immediate turnaround times, meaning standard localized logistics models must be adapted to withstand sudden material shortfalls or unexpected delays.</p>
+                    
+                    <h4>The Commercial Problem</h4>
+                    <p>During a fast-track electro-mechanical development sequence, unexpected logjams in international container routes caused a projected 4-week delivery delay for critical, long-lead central HVAC equipment components. If left unaddressed, this delay would cause downstream labor backlogs, halting installation crews and triggering severe contractual delay penalties from the developer.</p>
+                    
+                    <h4>The Strategic Resolution</h4>
+                    <p>Instead of taking a passive approach, we executed a two-tiered negotiation track. First, we initiated an itemized technical audit of local manufacturer alternatives that held ready-to-ship stock. Second, we adjusted our workflow using submittal engineering, presenting performance comparison sheets directly to the consulting inspectors to prove technical equivalence. By securing an emergency material substitution within 72 hours, we kept the on-site installation schedule fully intact.</p>
+                    
+                    <h4>Measurable Outcomes</h4>
+                    <p>This proactive pivot eliminated a potential 28-day project delay, maintained full compliance with local authority codes, and protected project margins. The primary takeaway is clear: successful procurement relies on constant risk assessment, deep supplier networks, and maintaining strong, clear channels of communication with project consultants.</p>
+                `
+            },
+            2: {
+                title: "AI Integration Trends within the Modern MEP Landscape: Shifting Baseline Cost Frameworks",
+                meta: "Category: Automation Research & Application Insights | Reading Time: 5 mins",
+                content: `
+                    <p>The estimation ecosystem within mechanical, electrical, and plumbing contracting has long relied on manual calculations. However, the introduction of automated machine-learning models is shifting how techno-commercial engineers forecast material requirements, identify cost variances, and evaluate bidding risks.</p>
+                    
+                    <h4>Moving Beyond Static Spreadsheets</h4>
+                    <p>Traditional estimation relies heavily on human pattern recognition to adjust for price fluctuations in bulk commodities, such as copper, steel, and advanced electrical components. By integrating automated predictive parsing engines into estimation software, teams can analyze historical data from hundreds of previous tenders alongside live international commodity feeds simultaneously.</p>
+                    
+                    <h4>Applying Robotic Logic to Commercial Pipelines</h4>
+                    <p>My academic research in robotic automation logic highlighted how rule-based sensory models can effectively streamline complex physical tasks. Applying those same structural principles to digital workflows shows that software automation can manage routine, manual quantity take-offs with high precision, allowing engineers to focus on strategic negotiation and value engineering.</p>
+                    
+                    <h4>The Path Forward</h4>
+                    <p>AI will not replace the commercial engineer. Instead, it serves as an analytical partner that flags pricing discrepancies, detects code deviations early in schematic drawings, and handles repetitive tasks. This shift allows teams to focus on building strong client relationships and executing smarter commercial negotiations.</p>
+                `
+            },
+            3: {
+                title: "How Key Decision Makers Impact Procurement Dynamics: Strategic Coordination in Project Bidding",
+                meta: "Category: Commercial Strategy & Executive Leadership | Reading Time: 4 mins",
+                content: `
+                    <p>Winning a profitable MEP tender requires balancing two conflicting priorities: maintaining competitive, aggressive commercial pricing while ensuring complete adherence to design specifications. Achieving this balance requires close alignment among project developers, consultants, and procurement engineers early in the process.</p>
+                    
+                    <h4>The Disconnect in Tendering</h4>
+                    <p>Tenders often encounter issues when procurement teams operate in isolation, treating material items as simple lines on a spreadsheet. This approach can lead to selecting low-cost equipment that fails to meet the consultant's performance criteria, resulting in costly re-submittals and project delays later on.</p>
+                    
+                    <h4>Establishing Early Cross-Channel Technical Reviews</h4>
+                    <p>Smarter bidding involves analyzing the underlying functional requirements of a project from day one. By collaborating early with primary engineers, estimating teams can identify technical gaps, propose optimized material packages, and secure pre-approvals from consultants before submitting final bids.</p>
+                    
+                    <h4>The Competitive Edge</h4>
+                    <p>This collaborative approach changes how the client views your proposal. Rather than just offering a low price, your firm becomes a practical technical partner capable of delivering commercial efficiency without compromising design integrity or system reliability.</p>
+                `
+            },
+            4: {
+                title: "Value Engineering vs Brand Over-Specification: Navigating Rigid Material Requirements",
+                meta: "Category: Value Engineering & Cost Optimization | Reading Time: 5 mins",
+                content: `
+                    <p>A common challenge in modern MEP bidding is the rise of brand over-specification, where design documents restrict selections to a narrow list of high-priced proprietary brands. This practice limits procurement flexibility and drives up overall project costs.</p>
+                    
+                    <h4>Redefining Value Engineering</h4>
+                    <p>True value engineering is not about cutting costs by substituting inferior materials. It is a systematic process that maintains system performance and safety while identifying more cost-effective ways to achieve the design intent.</p>
+                    
+                    <h4>Navigating Brand Restrictions</h4>
+                    <p>When dealing with rigid brand restrictions, the techno-commercial engineer must look beyond the brand name and analyze the equipment's core engineering specifications, such as raw performance data, material grades, and compliance certifications. Presenting side-by-side compliance matrices allows you to prove to consultants that an alternative brand will deliver the same operational life and efficiency at a lower cost.</p>
+                    
+                    <h4>Delivering Commercial Value</h4>
+                    <p>This approach helps unlock hidden savings within mechanical, electrical, and plumbing scopes. It demonstrates that professional commercial engineering relies on technical expertise, regulatory knowledge, and clear, data-driven communication with project stakeholders.</p>
+                `
+            }
+        };
+
+        const vlogRepository = {
+            1: {
+                title: "On-Site: MEP Procurement Realities — Field Logistics and Approval Management",
+                meta: "Video Vlog Companion Report | Run Time Focus: Material Compliance",
+                content: "<p>This video segment tracks field management operations on active sites, focusing on strategies to reduce material waste and streamline on-site handling. It details how to manage the technical submittal process with consultants, ensuring all deliveries match approved samples to avoid costly delays or rejections during installation.</p>"
+            },
+            2: {
+                title: "Digital Tools in Estimation — Transforming Digital Take-offs into Live Dashboards",
+                meta: "Technical Screencast Walkthrough | Run Time Focus: Power BI & Planswift integration",
+                content: "<p>This walkthrough demonstrates how to bridge the gap between initial design take-offs and active commercial tracking. It shows how exporting raw quantities from Planswift into dynamic Excel tables and connecting them to live Power BI dashboards helps estimation teams spot variance trends early and optimize material budgets in real time.</p>"
+            },
+            3: {
+                title: "Robotics & AI in Industry — Applying Automation Principles to Commercial Workflows",
+                meta: "Research presentation summary | Run Time Focus: Algorithmic Process Optimization",
+                content: "<p>This presentation connects academic research in automation with practical project management. It explores how the algorithmic path-planning models originally developed for industrial robotics can be adapted to optimize procurement workflows, streamline material tracking, and automate vendor follow-up systems.</p>"
+            }
+        };
+
+        // SPA Core Router Logic
+        function navigateTo(targetViewId) {
+            // Hide any open sub-detail panels first
+            closeDetail('blogs');
+            closeDetail('vlogs');
+
+            // Switch view tabs
+            document.querySelectorAll('.spa-page').forEach(page => {
+                page.classList.remove('active-view');
+            });
+            document.querySelectorAll('nav ul li a').forEach(link => {
+                link.classList.remove('active-nav');
+            });
+
+            const activeTargetPage = document.getElementById(`view-${targetViewId}`);
+            if(activeTargetPage) {
+                activeTargetPage.classList.add('active-view');
+                document.getElementById(`nav-${targetViewId}`).classList.add('active-nav');
+                window.scrollTo(0, 0);
+            }
+        }
+
+        // Sub-Navigation Layer Controller
+        function openDetail(type, id) {
+            if(type === 'blog') {
+                const targetData = blogRepository[id];
+                document.getElementById('blogs-main-list').style.display = 'none';
+                document.getElementById('blog-display-title').innerText = targetData.title;
+                document.getElementById('blog-display-meta').innerText = targetData.meta;
+                document.getElementById('blog-display-body').innerHTML = targetData.content;
+                document.getElementById('blog-detail-view').classList.add('active-detail');
+            } else if(type === 'vlog') {
+                const targetData = vlogRepository[id];
+                document.getElementById('vlogs-main-list').style.display = 'none';
+                document.getElementById('vlog-display-title').innerText = targetData.title;
+                document.getElementById('vlog-display-meta').innerText = targetData.meta;
+                document.getElementById('vlog-display-body').innerHTML = targetData.content;
+                document.getElementById('vlog-detail-view').classList.add('active-detail');
+            }
+        }
+
+        function closeDetail(sectionType) {
+            if(sectionType === 'blogs') {
+                document.getElementById('blog-detail-view').classList.remove('active-detail');
+                document.getElementById('blogs-main-list').style.display = 'grid';
+            } else if(sectionType === 'vlogs') {
+                document.getElementById('vlog-detail-view').classList.remove('active-detail');
+                document.getElementById('vlogs-main-list').style.display = 'grid';
+            }
+        }
+    </script>
+</body>
+</html>
