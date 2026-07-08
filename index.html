@@ -3,11 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Amrithesh K — Techno-Commercial MEP Engineer. Procurement, estimation, and cost optimization across GCC high-rise and commercial developments.">
-    <title>Amrithesh K | Techno-Commercial MEP Engineer</title>
+    <meta name="description" content="Amrithesh K — Senior Techno-Commercial MEP Engineer. Procurement strategy, estimation accuracy, and cost optimization across GCC high-rise and commercial developments. 5+ years at PECO MEP and Al Farasha Electromechanical.">
+    <meta name="keywords" content="MEP Engineer, Procurement, Estimation, UAE Construction, BIM, HVAC, Electrical, Cost Optimization, Value Engineering, GCC, Dubai, DEWA, DM, NFPA, ASHRAE">
+    <meta name="author" content="Amrithesh K">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Amrithesh K | Techno-Commercial MEP Engineer">
+    <meta property="og:description" content="Senior MEP Engineer specializing in procurement strategy, estimation accuracy, and cost optimization across GCC high-rise developments. 5+ years experience, AED 25M+ annual procurement.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://amritheshk.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Amrithesh K | Techno-Commercial MEP Engineer | Dubai, UAE</title>
+    <link rel="canonical" href="https://amritheshk.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-deep: #030712;
@@ -26,26 +35,100 @@
             --border-hover: rgba(6, 182, 212, 0.25);
             --success: #10b981;
             --warning: #f59e0b;
+            --danger: #ef4444;
             --radius-sm: 8px;
             --radius-md: 12px;
             --radius-lg: 16px;
             --radius-xl: 24px;
             --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --font-display: 'Playfair Display', serif;
+        }
+
+        [data-theme="light"] {
+            --bg-deep: #f8fafc;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f1f5f9;
+            --bg-card: rgba(255, 255, 255, 0.7);
+            --bg-glass: rgba(255, 255, 255, 0.5);
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+            --border: rgba(148, 163, 184, 0.15);
+            --border-hover: rgba(6, 182, 212, 0.3);
         }
 
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: var(--font-body);
             background: var(--bg-deep);
             color: var(--text-secondary);
             line-height: 1.7;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            transition: background 0.5s ease, color 0.5s ease;
         }
 
         ::selection { background: var(--accent); color: var(--bg-deep); }
+
+        /* ========== LOADING SCREEN ========== */
+        .loading-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: var(--bg-deep);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+        .loading-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        .loading-logo {
+            font-family: var(--font-mono);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent);
+            letter-spacing: 4px;
+            margin-bottom: 32px;
+        }
+        .loading-bar {
+            width: 200px;
+            height: 2px;
+            background: var(--border);
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+        .loading-bar-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--accent), var(--accent-dim));
+            animation: loadingFill 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        @keyframes loadingFill {
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 100%; }
+        }
+        .loading-text {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            margin-top: 16px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
 
         /* ========== AMBIENT ENGINEERING BACKGROUND ========== */
         .ambient-bg {
@@ -55,6 +138,7 @@
             pointer-events: none;
             overflow: hidden;
             background: var(--bg-deep);
+            transition: background 0.5s ease;
         }
         .ambient-bg::before {
             content: '';
@@ -107,7 +191,7 @@
             position: absolute;
             opacity: 0.06;
             color: var(--accent);
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
             font-size: 0.65rem;
             white-space: nowrap;
             animation: floatParticle linear infinite;
@@ -128,6 +212,10 @@
             backdrop-filter: blur(24px) saturate(150%);
             -webkit-backdrop-filter: blur(24px) saturate(150%);
             border-bottom: 1px solid var(--border);
+            transition: background 0.5s ease;
+        }
+        [data-theme="light"] nav {
+            background: rgba(248, 250, 252, 0.85);
         }
         .nav-inner {
             max-width: 1200px;
@@ -139,7 +227,7 @@
             padding: 0 24px;
         }
         .logo {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
             font-size: 1.1rem;
             font-weight: 600;
             color: var(--text-primary);
@@ -199,6 +287,30 @@
             background: rgba(6, 182, 212, 0.06);
         }
         .nav-links a.active::after { width: 20px; }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .theme-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+        .theme-toggle:hover {
+            border-color: var(--border-hover);
+            color: var(--accent);
+            background: rgba(6, 182, 212, 0.08);
+        }
         .menu-toggle {
             display: none;
             background: none;
@@ -247,7 +359,7 @@
             padding: 8px 18px;
             border-radius: 100px;
             margin-bottom: 28px;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
             letter-spacing: 0.5px;
             text-transform: uppercase;
         }
@@ -429,7 +541,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
             font-size: 0.6rem;
             color: rgba(6, 182, 212, 0.6);
             overflow: hidden;
@@ -506,7 +618,7 @@
         .corner-bracket.br { bottom: 0; right: 0; border-left: none; border-top: none; }
         .dim-label {
             position: absolute;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
             font-size: 0.6rem;
             color: rgba(6, 182, 212, 0.5);
             opacity: 0;
@@ -522,7 +634,7 @@
             background: rgba(6, 182, 212, 0.1);
             border: 1px solid rgba(6, 182, 212, 0.3);
             color: var(--accent);
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
             font-size: 0.75rem;
             border-radius: 100px;
             cursor: pointer;
@@ -588,7 +700,7 @@
         }
         .stat-cell:hover::before { width: 40%; }
         .stat-number {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
             font-size: 2rem;
             font-weight: 700;
             color: var(--accent);
@@ -615,7 +727,7 @@
         }
         .section-header.center { text-align: center; margin-left: auto; margin-right: auto; }
         .section-eyebrow {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
             font-size: 0.75rem;
             font-weight: 600;
             color: var(--accent);
@@ -728,7 +840,7 @@
             font-weight: 600;
             padding: 4px 12px;
             border-radius: 100px;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -745,7 +857,7 @@
         .timeline-date {
             font-size: 0.8rem;
             color: var(--text-muted);
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
         }
         .timeline-card h3 {
             font-size: 1.25rem;
@@ -993,7 +1105,7 @@
             font-weight: 600;
             padding: 4px 10px;
             border-radius: 100px;
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
@@ -1025,7 +1137,7 @@
         .article-read {
             font-size: 0.8rem;
             color: var(--text-muted);
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
         }
         .article-action {
             font-size: 0.8rem;
@@ -1112,7 +1224,7 @@
         .detail-meta-line {
             font-size: 0.85rem;
             color: var(--text-muted);
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
             margin-bottom: 32px;
             padding-bottom: 24px;
             border-bottom: 1px solid var(--border);
@@ -1217,7 +1329,7 @@
             margin-bottom: 48px;
         }
         .footer-brand h3 {
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
             font-size: 1.1rem;
             color: var(--text-primary);
             margin-bottom: 12px;
@@ -1260,7 +1372,7 @@
         .footer-bottom p {
             font-size: 0.8rem;
             color: var(--text-muted);
-            font-family: 'JetBrains Mono', monospace;
+            font-family: var(--font-mono);
         }
         .footer-social {
             display: flex;
@@ -1321,6 +1433,9 @@
                 border-bottom: 1px solid var(--border);
                 gap: 4px;
             }
+            [data-theme="light"] .nav-links {
+                background: rgba(248, 250, 252, 0.98);
+            }
             .nav-links.open { display: flex; }
             .menu-toggle { display: block; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1339,6 +1454,11 @@
     </style>
 </head>
 <body>
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-logo">AMRITHESH K</div>
+        <div class="loading-bar"><div class="loading-bar-fill"></div></div>
+        <div class="loading-text">Initializing Systems</div>
+    </div>
 
     <div class="ambient-bg"></div>
     <div class="blueprint-grid"></div>
@@ -1361,7 +1481,10 @@
                 </div>
                 AMRITHESH K
             </a>
-            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            </div>
             <ul class="nav-links" id="navLinks">
                 <li><a onclick="navigateTo('home')" id="nav-home" class="active">Home</a></li>
                 <li><a onclick="navigateTo('experience')" id="nav-experience">Experience</a></li>
@@ -1382,7 +1505,7 @@
                     Procurement and Estimation Engineer with 5+ years driving commercial operations across GCC high-rise and commercial developments. I bridge the gap between engineering specifications and commercial reality — delivering accurate BOQs, optimizing supply chains, and controlling costs without compromising code compliance.
                 </p>
                 <div class="hero-cta">
-                    <a href="https://drive.google.com/drive/folders/1lm0JUSAxqxOI0LdGMr9t-kxRe_dyzaHk?usp=sharing" target="_blank" class="btn btn-primary">
+                    <a href="https://drive.google.com/drive/folders/1lm0JUSAxqxOI0LdGMr9t-kxRe_dyzaHk?usp=sharing" target="_blank" class="btn btn-primary" rel="noopener noreferrer">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                         Download CV
                     </a>
@@ -1407,11 +1530,11 @@
             <div class="hero-visual">
                 <div class="photo-reveal-container" id="photoReveal">
                     <div class="photo-target" id="photoTarget">
-                        <img src="profile.jpeg" alt="Amrithesh K" onerror="this.style.display='none'">
+                        <img src="profile.jpeg" alt="Amrithesh K - Techno-Commercial MEP Engineer" loading="lazy" onerror="this.style.display='none'">
                     </div>
                     <div class="scan-line" id="scanLine"></div>
                     <div class="blueprint-overlay" id="blueprintOverlay">
-                        <svg viewBox="0 0 300 300">
+                        <svg viewBox="0 0 300 300" aria-hidden="true">
                             <circle cx="150" cy="150" r="140" fill="none" stroke="rgba(6,182,212,0.3)" stroke-width="0.5" stroke-dasharray="4 4"/>
                             <circle cx="150" cy="150" r="100" fill="none" stroke="rgba(6,182,212,0.2)" stroke-width="0.5"/>
                             <line x1="150" y1="10" x2="150" y2="290" stroke="rgba(6,182,212,0.15)" stroke-width="0.5"/>
@@ -1643,7 +1766,7 @@
     <!-- DETAIL OVERLAY -->
     <div class="detail-overlay" id="detailOverlay" onclick="closeDetail(event)">
         <div class="detail-panel" onclick="event.stopPropagation()">
-            <button class="detail-close" onclick="closeDetail()">✕</button>
+            <button class="detail-close" onclick="closeDetail()" aria-label="Close">✕</button>
             <div class="detail-tags" id="detailTags"></div>
             <h1 id="detailTitle"></h1>
             <div class="detail-meta-line" id="detailMeta"></div>
@@ -1669,7 +1792,7 @@
                     <h4>Connect</h4>
                     <a href="mailto:amritheshk22@outlook.com">Email</a>
                     <a href="tel:+971568924886">Phone</a>
-                    <a href="https://drive.google.com/drive/folders/1lm0JUSAxqxOI0LdGMr9t-kxRe_dyzaHk?usp=sharing" target="_blank">Download CV</a>
+                    <a href="https://drive.google.com/drive/folders/1lm0JUSAxqxOI0LdGMr9t-kxRe_dyzaHk?usp=sharing" target="_blank" rel="noopener noreferrer">Download CV</a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -1687,6 +1810,33 @@
     </footer>
 
     <script>
+        // ========== LOADING SCREEN ==========
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 2200);
+        });
+
+        // ========== THEME TOGGLE ==========
+        function toggleTheme() {
+            const body = document.body;
+            const btn = document.getElementById('themeToggle');
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            body.setAttribute('data-theme', newTheme);
+            btn.textContent = newTheme === 'light' ? '☀️' : '🌙';
+            btn.setAttribute('title', newTheme === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
+            localStorage.setItem('theme', newTheme);
+        }
+
+        (function() {
+            const saved = localStorage.getItem('theme');
+            if (saved === 'light') {
+                document.body.setAttribute('data-theme', 'light');
+                document.getElementById('themeToggle').textContent = '☀️';
+                document.getElementById('themeToggle').setAttribute('title', 'Switch to dark mode');
+            }
+        })();
 
         // ========== MEP PARTICLES ==========
         const mepSymbols = ['HVAC', 'FCU', 'AHU', 'VAV', 'CHW', 'DHW', 'EF', 'SF', 'LV', 'MV', 'ELV', 'BMS', 'FA', 'SPK', 'BOQ', 'RFQ', 'DEWA', 'DM', 'NFPA', 'IEC', 'Ø150', 'Ø200', 'DN100', 'AED', 'm²', 'kW', 'TR', 'CFM', 'L/s', 'bar', 'mm', 'm³/h'];
@@ -1747,27 +1897,20 @@
         function startPhotoReveal() {
             if (revealStarted) return;
             revealStarted = true;
-
             const btn = document.getElementById('revealBtn');
             btn.classList.add('hidden');
-
             const pieces = document.querySelectorAll('.build-piece');
             const centerX = 170;
             const centerY = 170;
-
-            // Phase 1: Pieces scatter outward
             pieces.forEach((piece, i) => {
                 const angle = (i / pieces.length) * Math.PI * 2;
                 const dist = 80 + Math.random() * 60;
                 const tx = Math.cos(angle) * dist;
                 const ty = Math.sin(angle) * dist;
                 const rot = (Math.random() - 0.5) * 60;
-
                 piece.style.transform = `translate(${tx}px, ${ty}px) rotate(${rot}deg)`;
                 piece.style.opacity = '0.7';
             });
-
-            // Phase 2: Pieces assemble to center
             setTimeout(() => {
                 pieces.forEach((piece, i) => {
                     setTimeout(() => {
@@ -1776,13 +1919,9 @@
                     }, i * 80);
                 });
             }, 600);
-
-            // Phase 3: Scan line
             setTimeout(() => {
                 document.getElementById('scanLine').classList.add('active');
             }, 1800);
-
-            // Phase 4: Photo appears, pieces fade
             setTimeout(() => {
                 document.getElementById('photoTarget').classList.add('revealed');
                 pieces.forEach((piece, i) => {
@@ -1791,8 +1930,6 @@
                     }, i * 50);
                 });
             }, 2200);
-
-            // Phase 5: Blueprint overlay + brackets + dimension
             setTimeout(() => {
                 document.getElementById('blueprintOverlay').classList.add('active');
                 document.getElementById('measureRing').classList.add('active');
@@ -1801,10 +1938,9 @@
             }, 3200);
         }
 
-        // Auto-start reveal after 1.5s on first load
         setTimeout(() => {
             if (!revealStarted) startPhotoReveal();
-        }, 1500);
+        }, 2500);
 
         // ========== ARTICLES DATA ==========
         const articles = [
